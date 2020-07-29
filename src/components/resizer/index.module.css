@@ -1,0 +1,16 @@
+.resizer {
+  display: flex;
+  background-color: red;
+}
+
+.row {
+  width: 100vw;
+  height: 3px;
+  cursor: row-resize;
+}
+
+.col {
+  width: 3px;
+  height: 100vh;
+  cursor: col-resize;
+}
