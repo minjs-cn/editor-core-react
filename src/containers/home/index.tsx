@@ -7,9 +7,6 @@ const Home: React.FC = () => {
       <h1>home</h1>
       <ul>
         <li>
-          <Link to="/work">work</Link>
-        </li>
-        <li>
           <Link to="/editor">editor</Link>
         </li>
       </ul>
