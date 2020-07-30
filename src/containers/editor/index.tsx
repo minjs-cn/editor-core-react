@@ -1,17 +1,17 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { editorRoutes } from 'src/routes';
+import { Layout } from 'antd';
+
+import styles from './index.module.css';
+import MyLayout from './components/layout';
 
 const Editor: React.FC = () => {
   return (
-    <div>
-      <h1>editor</h1>
-      <Switch>
-        {editorRoutes.map((route) => (
-          <Route key={route.path} path={route.path} component={route.component} />
-        ))}
-      </Switch>
-    </div>
+    <Layout className={styles.container}>
+      <Layout.Header className={styles.header}></Layout.Header>
+      <Layout.Content className={styles.content}>
+        <MyLayout />
+      </Layout.Content>
+    </Layout>
   );
 };
 

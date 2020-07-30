@@ -1,0 +1,16 @@
+.dock {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.tabs {
+  width: 100%;
+}
