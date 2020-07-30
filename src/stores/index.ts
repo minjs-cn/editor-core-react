@@ -5,27 +5,22 @@ import {
   useStore as useReduxStore,
   useDispatch as useReduxDispatch,
 } from 'react-redux';
-import { work, WorkState } from './work/reducers';
-import { WorkActions } from './work/actions';
+import { editor } from './editor/reducers';
+import { EditorState, EditorActions } from './editor/types';
 
-import { user, UserState } from './user/reducers';
-import { UserActions } from './user/actions';
-
-export { createWorkspace, restoreWorkspace } from './work/actions';
+export { createWorkspace, restoreWorkspace } from './editor/actions';
 
 interface RootState {
-  editor: WorkState;
-  user: UserState;
+  editor: EditorState;
 }
 
-type RootActions = WorkActions | UserActions;
+type RootActions = EditorActions;
 
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 export const useStore = () => useReduxStore<RootState, RootActions>();
 export const useDispatch = () => useReduxDispatch<Dispatch<RootActions>>();
 
 const rootReducers = combineReducers<RootState>({
-  editor: work,
-  user,
+  editor,
 });
 export const store = createStore(rootReducers);

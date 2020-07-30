@@ -1,7 +1,6 @@
 import Home from 'src/containers/home';
 import Editor from 'src/containers/editor';
 import NotFound from 'src/containers/not-found';
-import Work from 'src/containers/work';
 
 export const mainRoutes = [
   {
@@ -14,11 +13,6 @@ export const mainRoutes = [
     path: '/editor',
     title: '编辑器',
     component: Editor,
-  },
-  {
-    path: '/work',
-    title: '工作区',
-    component: Work,
   },
   {
     path: '/404',

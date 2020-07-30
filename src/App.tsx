@@ -6,6 +6,8 @@ import { mainRoutes } from './routes';
 import { Provider } from 'react-redux';
 import { store } from './stores';
 
+import 'antd/dist/antd.css';
+
 const App: React.FC = () => {
   return (
     <Provider store={store}>
