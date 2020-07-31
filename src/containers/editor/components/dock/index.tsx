@@ -41,8 +41,8 @@ const Dock: React.FC<Layout> = (props: Layout) => {
   } else {
     children = props.children.map((prop, i) => (
       <>
-        <Dock {...prop} />
-        {i !== props.children.length - 1 ? <Resizer direction={prop.direction} /> : null}
+        <Dock key={'dock_' + i} {...prop} />
+        {i !== props.children.length - 1 ? <Resizer key={'resizer_' + i} direction={prop.direction} /> : null}
       </>
     ));
   }
