@@ -1,7 +1,8 @@
 import { ComponentState, ComponentReducer, ADD_COMPONENT } from './types';
+import { basicComponents } from 'src/packages/index';
 
 const initialState: ComponentState = {
-  basic: [],
+  basicComponents,
 };
 
 export const component: ComponentReducer = (state = initialState, action) => {

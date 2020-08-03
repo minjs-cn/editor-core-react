@@ -8,7 +8,7 @@ export interface AddComponent extends Action<typeof ADD_COMPONENT> {}
 export type ComponentActions = AddComponent;
 
 export interface ComponentState {
-  basic: BasicComponentType[];
+  basicComponents: BasicComponentType[];
 }
 
 export type ComponentReducer = Reducer<ComponentState, ComponentActions>;

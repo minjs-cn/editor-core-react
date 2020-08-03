@@ -8,42 +8,33 @@ export interface Layout {
   direction?: 'row' | 'col';
   children: Layout[];
   title?: string;
-  name?: React.FunctionComponent<Layout>;
+  name?: React.FunctionComponent<any>;
   type?: 'dock' | 'tab' | 'page';
   flex: number;
+  key?: string;
 }
 
 const Dock: React.FC<Layout> = (props: Layout) => {
-  let children = null;
+  let pane = null;
 
   if (props.type === 'tab') {
-    children = React.createElement(
-      Tabs,
-      {
-        type: 'card',
-        defaultActiveKey: '0',
-        className: styles.tabs,
-        size: 'small',
-      },
-      props.children.map((prop, i) =>
-        React.createElement(
-          Tabs.TabPane,
-          {
-            key: i,
-            tab: prop.title,
-          },
-          prop.name ? [React.createElement(prop.name)] : []
-        )
-      )
+    pane = (
+      <Tabs type="card" defaultActiveKey="0" className={styles.tabs} size="small">
+        {props.children.map((prop, i) => (
+          <Tabs.TabPane key={'tabpane_' + i} tab={prop.title}>
+            {prop.name ? React.createElement(prop.name) : null}
+          </Tabs.TabPane>
+        ))}
+      </Tabs>
     );
   } else if (props.type === 'page') {
-    return props.name ? React.createElement(props.name) : null;
+    pane = props.name ? React.createElement(props.name) : null;
   } else {
-    children = props.children.map((prop, i) => (
-      <>
-        <Dock key={'dock_' + i} {...prop} />
-        {i !== props.children.length - 1 ? <Resizer key={'resizer_' + i} direction={prop.direction} /> : null}
-      </>
+    pane = props.children.map((prop, i) => (
+      <React.Fragment key={'dock_' + i}>
+        <Dock {...prop} />
+        {i !== props.children.length - 1 ? <Resizer direction={prop.direction} /> : null}
+      </React.Fragment>
     ));
   }
 
@@ -51,7 +42,7 @@ const Dock: React.FC<Layout> = (props: Layout) => {
 
   return (
     <div className={styles.dock + ' ' + styles[direction]} style={{ flex: props.flex }}>
-      {children}
+      {pane}
     </div>
   );
 };

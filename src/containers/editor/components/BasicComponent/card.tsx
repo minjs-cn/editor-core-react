@@ -1,9 +1,15 @@
 import React from 'react';
 import { BasicComponentType } from '../../../../packages';
-import { Card } from 'antd';
+
+import styles from './card.module.css';
 
 const ComponentCard: React.FC<BasicComponentType> = (props: BasicComponentType) => {
-  return <Card cover={<img src={props.thumbnail} />}></Card>;
+  return (
+    <div className={styles.card}>
+      <img className={styles.img} src={props.thumbnail} alt="BasicComponent" />
+      <div className={styles.meta}>{props.label + ' ' + props.version}</div>
+    </div>
+  );
 };
 
 export default ComponentCard;

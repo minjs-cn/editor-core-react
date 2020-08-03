@@ -1,0 +1,21 @@
+.card {
+  position: relative;
+  width: 100px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.img {
+  width: 100%;
+}
+
+.meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+}

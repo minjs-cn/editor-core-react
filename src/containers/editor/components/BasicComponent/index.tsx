@@ -3,10 +3,12 @@ import { useSelector } from 'src/stores';
 import MyCard from './card';
 
 const BasicComponent: React.FC = () => {
-  const { basic } = useSelector((state) => state.component);
+  const { basicComponents } = useSelector((state) => state.component);
+  console.log(basicComponents);
+
   return (
     <div>
-      {basic.map((com) => (
+      {basicComponents.map((com) => (
         <MyCard {...com} key={com.name} />
       ))}
     </div>
